@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.bookclub.service.dao.WishlistDao;
+import com.bookclub.service.impl.MongoWishlistDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bookclub.model.WishlistItem;
-import com.bookclub.service.impl.MemWishlistDao;
+
 /**
 *
 * venkatduddukuri, (2023). CIS 530 Server Side Java Programming. Bellevue University, all
@@ -25,14 +28,18 @@ import com.bookclub.service.impl.MemWishlistDao;
 @Controller
 @RequestMapping("/wishlist")
 public class WishlistController {
-	
+
+	WishlistDao wishlistDao = new MongoWishlistDao();
+
+	@Autowired
+	private void setWishlistDao(WishlistDao wishlistDao) {
+		this.wishlistDao = wishlistDao;
+	}
 	@GetMapping
     public String showWishlsit(Model model) {
-		System.out.println("list");
-		MemWishlistDao memWishlistDao = new MemWishlistDao();
-		List<WishlistItem> wishlist = memWishlistDao.list();
-		model.addAttribute("wishlist", wishlist);
-		System.out.println(wishlist);
+		List<WishlistItem> wishlistItem = wishlistDao.list();
+
+		model.addAttribute("wishlistItem", wishlistItem);
 		return "wishlist/list";
     }
 	@GetMapping(value="/new")
@@ -43,13 +50,14 @@ public class WishlistController {
 	}
 	
 	@PostMapping(value="/addWishlistItem")
-	public String addWishlistItemm(@Valid WishlistItem wishlistItem, BindingResult bindingResults) {
-		System.out.println("empty");
-		System.out.println(wishlistItem.toString());
-		System.out.println(bindingResults.toString());
-		if(bindingResults.hasErrors()) {
+	public String addWishlistItemm(@Valid WishlistItem wishlistItem, BindingResult bindingResults){
+
+		if (bindingResults.hasErrors()) {
 			return "wishlist/new";
 		}
+
+		wishlistDao.add(wishlistItem); // add the record to MongoDB
+
 		return "redirect:/wishlist";
 	}
 }
