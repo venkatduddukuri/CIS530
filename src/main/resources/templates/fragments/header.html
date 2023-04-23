@@ -26,9 +26,17 @@
                         </li>
 
                     </ul>
-
-
-
+                    <div style="text-align: start;margin-left: -590px;">
+                   <div sec:authorize="isAuthenticated()">
+                       Logged in as <strong sec:authentication="name"></strong>
+                   </div>
+                </div>
+                </div>
+                 
+                <div>
+                   <div class="float-end">
+                      <a href="/logout" th:href="@{/logout}" class="nav-link float-end">Logout</a>
+                   </div>
                 </div>
             </div>
         </nav>
