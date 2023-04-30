@@ -3,6 +3,9 @@ package com.bookclub.model;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.annotation.Id;
+
+
 
 public class WishlistItem {
 

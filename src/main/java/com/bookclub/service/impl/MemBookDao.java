@@ -30,4 +30,24 @@ public class MemBookDao implements BookDao {
         }
         return new Book();
     }
+	@Override
+	public void add(Book entity) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(Book entity) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean remove(String entity) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public List<Book> list(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
