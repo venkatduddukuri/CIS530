@@ -36,10 +36,8 @@ public class WishlistController {
 		this.wishlistDao = wishlistDao;
 	}
 	@GetMapping
-    public String showWishlsit(Model model) {
-		List<WishlistItem> wishlistItem = wishlistDao.list();
+	public String showWishlsit() {
 
-		model.addAttribute("wishlistItem", wishlistItem);
 		return "wishlist/list";
     }
 	@GetMapping(value="/new")
