@@ -2,71 +2,81 @@ package com.bookclub.model;
 import java.util.List;
 
 public class Book {
-    private String isbn;
-    private String title;
-    private String description;
-    private int numOfPages;
-    private List<String> authors;
+	  private String isbn;
+	  private String title;
+	  private String description;
+	  private String infoUrl;
+	  private int numOfPages;
 
-    public Book(){
 
-    }
-    public Book(String isbn, String title, String description, int numOfPages, List<String> authors) {
-        this.isbn = isbn;
-        this.title = title;
-        this.description = description;
-        this.numOfPages = numOfPages;
-        this.authors = authors;
-    }
+	  public Book() {}
 
-    public String getIsbn() {
-        return isbn;
-    }
+	  public Book(String isbn, String title, String description, String infoUrl, int numOfPages) {
+	    this.isbn = isbn;
+	    this.title = title;
+	    this.description = description;
+	    this.infoUrl = infoUrl;
+	    this.numOfPages = numOfPages;
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
+	  }
 
-    public String getTitle() {
-        return title;
-    }
+	  public Book(String isbn, String title, String infoUrl) {
+	    this.isbn = isbn;
+	    this.title = title;
+	    this.infoUrl = infoUrl;
+	  }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	  public void setIsbn(String isbn) {
+	    this.isbn = isbn;
+	  }
 
-    public String getDescription() {
-        return description;
-    }
+	  public String getIsbn() {
+	    return isbn;
+	  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	  public void setTitle(String title) {
+	    this.title = title;
+	  }
 
-    public int getNumOfPages() {
-        return numOfPages;
-    }
+	  public String getTitle() {
+	    return title;
+	  }
 
-    public void setNumOfPages(int numOfPages) {
-        this.numOfPages = numOfPages;
-    }
+	  public void setDescription(String description) {
+	    this.description = description;
+	  }
 
-    public List<String> getAuthors() {
-        return authors;
-    }
+	  public String getDescription() {
+	    return description;
+	  }
 
-    public void setAuthors(List<String> authors) {
-        this.authors = authors;
-    }
+	  public void setNumOfPages(int numOfPages) {
+	    this.numOfPages = numOfPages;
+	  }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", numOfPages=" + numOfPages +
-                ", authors=" + authors +
-                '}';
-    }
-}
+	  public int getNumOfPages() {
+	    return numOfPages;
+	  }
+
+
+
+	  /**
+	   * @return the infoUrl
+	   */
+	  public String getInfoUrl() {
+	    return infoUrl;
+	  }
+
+	  /**
+	   * @param infoUrl the infoUrl to set
+	   */
+	  public void setInfoUrl(String infoUrl) {
+	    this.infoUrl = infoUrl;
+	  }
+
+	  @Override
+	  public String toString() {
+	    return String.format("Book{isbn=%s, title=%s, description=%s, numOfPages=%s, authors=%s}", isbn,
+	        title, description, numOfPages, infoUrl);
+	  }
+	}

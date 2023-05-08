@@ -2,7 +2,8 @@ package com.bookclub.web;
 
 import com.bookclub.model.Book;
 import com.bookclub.service.dao.BookDao;
-import com.bookclub.service.impl.MemBookDao;
+import com.bookclub.service.impl.RestBookDao;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,8 +31,8 @@ public class HomeController {
 
   @RequestMapping(method = RequestMethod.GET)
   public String showHome(Model model) {
-    BookDao booksDao = new MemBookDao();
-    List<Book> books = booksDao.list();
+    BookDao booksDao = new RestBookDao();
+    List<Book> books = booksDao.list("9780590353427");
     for (Book book : books){
 
     System.out.println(book.toString());
@@ -43,7 +44,7 @@ public class HomeController {
   public String getMonthlyBook(@PathVariable("id") String id, Model model) {
     String isbn=id;
     System.out.println(id);
-    MemBookDao booksDao = new MemBookDao();
+    RestBookDao booksDao = new RestBookDao();
     Book book = booksDao.find(isbn);
     System.out.println(book.toString());
 
