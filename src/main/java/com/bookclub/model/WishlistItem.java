@@ -63,9 +63,9 @@ public class WishlistItem {
 	public String getId() {
 		return id;
 	}
+
 	@Override
 	public String toString() {
-		return "WishlistItem [isbn=" + isbn + ", title=" + title + ", id=" +id +"]";
+		return "WishlistItem [id=" + id + ", isbn=" + isbn + ", title=" + title + ", username=" + username + "]";
 	}
-	
 }
