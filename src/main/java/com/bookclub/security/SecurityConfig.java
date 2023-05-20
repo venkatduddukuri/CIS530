@@ -21,8 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and()
-				.logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll();
-	}
+	  protected void configure(HttpSecurity http) throws Exception {
+	    http.authorizeRequests()
+	        .antMatchers("/monthly-books/list", "/monthly-books/new", "/monthly-books").hasRole("ADMIN")
+	        .anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and()
+	        .logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll();
+	  }
 }
