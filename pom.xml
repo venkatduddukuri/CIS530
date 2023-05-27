@@ -47,6 +47,14 @@
     <artifactId>springdoc-openapi-ui</artifactId>
     <version>1.5.2</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner -->
+<dependency>
+    <groupId>org.junit.platform</groupId>
+    <artifactId>junit-platform-runner</artifactId>
+    <version>1.9.1</version>
+    <scope>test</scope>
+</dependency>
+
 
 		<!-- MongoDB Driver -->
 		<dependency>
